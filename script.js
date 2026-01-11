@@ -39,6 +39,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 
+document.body.classList.remove("loading");
+
 /* ===============================
    DOM ELEMENTS
 ================================ */
@@ -101,11 +103,11 @@ checkFormValidity();
    INITIAL STATE
 ================================ */
 emailjs.init("4J0u_XLz8cvFdjQTO"); // Initialize EmailJS with your user ID
-teamBox.classList.remove("hidden");
-playersBox.classList.add("hidden");
-verificationBox.classList.add("hidden");
-cardsBox.classList.add("hidden");
-selectedCardBox.classList.add("hidden");
+teamBox.style.display = "block";
+playersBox.style.display = "none";
+verificationBox.style.display = "none";
+cardsBox.style.display = "none";
+selectedCardBox.style.display = "none";
 
 let teamId = null;
 
@@ -143,7 +145,10 @@ teamBtn.addEventListener("click", async () => {
     teamId = teamRef.id;
 
     teamBox.classList.add("hidden");
+    teamBox.style.display = "none";
     playersBox.classList.remove("hidden");
+    playersBox.style.display = "block";
+
     msg.innerText = "";
 
   } catch (err) {
@@ -214,6 +219,11 @@ playersBtn.addEventListener("click", async () => {
       }
     }
 
+    playersBox.classList.add("hidden");
+    playersBox.style.display = "none";
+    verificationBox.classList.remove("hidden");
+    verificationBox.style.display = "block";
+
     for (let player of players) {
 
     // define playerId FIRST
@@ -253,9 +263,6 @@ playersBtn.addEventListener("click", async () => {
     );
   }
 
-  playersBox.classList.add("hidden");
-  verificationBox.classList.remove("hidden");
-
   waitForVerification();
 
   } catch (error) {
@@ -277,7 +284,9 @@ function waitForVerification() {
 
     if (data.anyPlayerVerified === true) {
       verificationBox.classList.add("hidden");
+      verificationBox.style.display = "none";
       cardsBox.classList.remove("hidden");
+      cardsBox.style.display = "block";
       initializeCardSelection();
     }
   });
