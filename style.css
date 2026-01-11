@@ -15,6 +15,15 @@ body {
   justify-content: center;
 }
 
+body.loading * {
+  visibility: hidden;
+}
+
+/* Prevent UI flash on page load */
+#teamBox, #playersBox, #verificationBox, #cardsBox, #selectedCardBox {
+  display: none;
+}
+
 .container {
   margin: 5vh;
   background: white;
@@ -240,5 +249,3 @@ button:disabled {
   border: 2px solid green;
   border-radius: 1vh;
 }
-
-
