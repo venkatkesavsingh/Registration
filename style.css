@@ -15,7 +15,7 @@ body {
   justify-content: center;
 }
 
-body.loading * {
+body.loading {
   visibility: hidden;
 }
 
@@ -249,3 +249,4 @@ button:disabled {
   border: 2px solid green;
   border-radius: 1vh;
 }
+
