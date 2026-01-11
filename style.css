@@ -1,0 +1,241 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(30deg, black, red, black);
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  margin: 5vh;
+  background: white;
+  width: 100vh;
+  padding: 2vh;
+  border-radius: 1vw;
+  text-align: center;
+}
+
+#teamBox {
+  max-width: 500vh;
+  min-height: 30vh;
+} 
+
+#Registerlogo {
+  width: 50vh;
+  height: auto;
+  margin: 1vh;
+}
+
+.hidden {
+  display: none;
+}
+
+input, select, button {
+  width: 95%;
+  gap: 1vh;
+  padding: 2vh;
+  font-size: 2vh;
+  font-weight:bolder;
+  margin: 1vh 0;
+  border-radius: 0.5vw;
+  border: 0.3vh solid black;
+}
+
+option {
+  width: 95%;
+  border-radius: 0.5vw;
+  border: 0.3vh solid black;
+}
+
+button {
+  margin: 2.5vh 0 0 0;
+  width: 50%;
+  font-size: 5vh;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: normal;
+  background: #1d2671;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.container-hidden {
+  background: white;
+  width: auto;
+  padding: 2vh;
+  border-radius: 1vw;
+  text-align: center;
+}
+
+#playersBox {
+  max-width: max-content;
+  max-height: max-content;
+}
+
+.players-flex {
+  display: flex;
+  gap: 2vh;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.player-card-1, .player-card-2, .player-card-3, .player-card-4 {
+  position: relative;
+  display: inline-block; /* shrink-wrap to image */
+}
+
+.player-card-1 img, .player-card-2 img, .player-card-3 img, .player-card-4 img {
+  display: block; /* remove image bottom gap */
+  width: 37vh;
+  height: auto;
+}
+
+/* Title */
+.player-details-1 img, .player-details-2 img, .player-details-3 img, .player-details-4 img {
+  margin-top: 4vh;
+  font-size: 5vh;
+  width: 25vh;
+  height: auto;
+}
+
+.player-details-1, .player-details-2, .player-details-3, .player-details-4 {
+  align-items: center;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* Styling inputs so they look good on image */
+.player-details-1 input, .player-details-2 input, .player-details-3 input, .player-details-4 input {
+  width: 90%;
+  padding: 1vh 2vh;
+  border-radius: 1vh;
+  text-align: left;
+  border: 0.1vh solid #000000;
+  outline: none;
+  font-size: 2vh;
+}
+
+#playersBtn {
+  margin-top: 3vh;
+  height: 10vh;
+}
+
+/* POPUP MESSAGE */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: black;
+  color: white;
+  padding: 2vh 4vh;
+  font-size: 2.5vh;
+  border-radius: 1vh;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.popup.show {
+  opacity: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+.loader {
+  margin: 2.5vh auto;
+  width: 5vw;
+  height: 5vw;
+  border: 0.5vw solid #ddd;
+  border-top: 0.5vw solid #1d2671;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.cardscontainer {
+  background: white;
+  padding: 2.5vh;
+  border-radius: 1vw;
+  text-align: center;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2vh;
+  margin-top: 2vh;
+}
+
+.cards-grid > div {
+  display: flex;
+  flex-direction: row;
+  gap: 3vh;
+  align-items: center;
+}
+
+.cards-grid img {
+  width: 100%;
+  max-width: 12vh;
+  height: auto;
+  border: 2px solid #ccc;
+  border-radius: 1vh;
+  cursor: pointer;
+  transition: border-color 0.3s, transform 0.2s;
+}
+
+.cards-grid img:hover {
+  border-color: black;
+  transform: scale(1.05);
+}
+
+.cards-grid img.selected {
+  border-color: green;
+  box-shadow: 0 0 10px rgba(0, 128, 0, 0.5);
+}
+
+.cards-grid img.taken {
+  border: 2px solid #ccc;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.selected-card-display {
+  display: flex;
+  justify-content: center;
+  margin-top: 2vh;
+}
+
+.selected-card-display img {
+  width: 20vh;
+  height: auto;
+  border: 2px solid green;
+  border-radius: 1vh;
+}
+
